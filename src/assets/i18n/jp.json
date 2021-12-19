@@ -1,0 +1,23 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "ダッシュボード",
+        "TIMELOGS": "時間ログ",
+        "TIMESHEET": "タイムシート",
+        "LEAVES": "Leaves",
+        "PROFILE": "プロフィール"
+    },
+
+    "TIMELOGS": {
+        "TITLE": "時間ログ"
+    },
+
+    "ALERTS": {
+        "LOGIN_SUCCESSFUL": "ログインに成功しました",
+        "LOGOUT_SUCCESSFUL": "ログアウトに成功しました"
+    },
+
+    "ERROR": {
+        "NO_DATA_FOUND": "何もデータが見つかりませんでした",
+        "SESSION_EXPIRED": "アクティビティがないため、ログアウトされました。もう一度ログインしてください"
+    }
+}

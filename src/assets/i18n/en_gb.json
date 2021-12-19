@@ -1,0 +1,27 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "Dashboard",
+        "TIMELOGS": "Timelogs",
+        "TIMESHEET": "Timesheet",
+        "LEAVES": "Leaves",
+        "PROFILE": "Profile"
+    },
+
+    "TIMELOGS": {
+        "TITLE": "Time Logs"
+    },
+
+    "TIMESHEET": {
+        "TITLE": "Timesheet"
+    },
+
+    "ALERTS": {
+        "LOGIN_SUCCESSFUL": "You have successfully logged in",
+        "LOGOUT_SUCCESSFUL": "You have successfully logged out"
+    },
+
+    "ERROR": {
+        "NO_DATA_FOUND": "No data found",
+        "SESSION_EXPIRED": "You have been logged out due to inactivity. Please log in again"
+    }
+}

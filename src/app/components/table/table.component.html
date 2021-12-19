@@ -1,0 +1,72 @@
+<table class="table align-items-center table-flush">
+    <thead class="thead-light">
+        <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col" *ngFor="let col of params.columns">{{col.value}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of params.data | paginate : { itemsPerPage: pagination.tableSize, currentPage: pagination.page, totalItems: pagination.count }; let i = index">
+            <!-- <td scope="col"></td> -->
+            <ng-container *ngFor="let item of params.columns">
+                <td *ngIf="data[item.key]" scope="row">
+                    <ng-container *ngFor="let element of data[item.key]">
+                        <div *ngIf="element.type == 'text'">
+                            <span [innerHTML]="element.value"></span>
+                        </div>
+                        <div *ngIf="element.type == 'options'">
+                            <button class="{{element.class}}" (click)="callback(data, element)">{{element.text}}</button>
+                        </div>
+
+                    </ng-container>
+                </td>
+            </ng-container>
+            <!-- <td scope="row">
+                {{data.employee_number}}
+            </td>
+            <td>
+                {{data.last_name}}
+            </td>
+            <td [innerHTML]="data.first_name_html"></td>
+            <td >
+                {{data.last_name}}
+            </td>
+            <td>
+                {{data.job_title}}
+            </td>
+            <td>
+                {{data.job_title}}
+            </td>
+            <td>
+                {{data.schedule_from}} - {{data.schedule_to}}
+            </td>
+            <td>
+                {{data.work_hours}}
+            </td>
+            <td class="text-right">
+                <button class="btn btn-sm btn-info" type="button" data-toggle="modal" data-target="#employee">View</button>
+            </td> -->
+        </tr>
+        <tr *ngIf="!params.data.length">
+            <td colspan="100%" class="text-center">
+                No data found.
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="100%">
+                <div class="d-flex flex-row-reverse"><!--  *ngIf="pagination.count>0" -->
+                    <pagination-controls responsive="true" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+                    <div>
+                        <select (change)="onTableSizeChange($event)" class="form-control form-control-sm">
+                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                {{ size }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>

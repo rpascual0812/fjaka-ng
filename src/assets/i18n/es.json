@@ -1,0 +1,23 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "Tablero de instrumentos",
+        "TIMELOGS": "Registros de Tiempo",
+        "TIMESHEET": "Hoja de Tiempo",
+        "LEAVES": "Leaves",
+        "PROFILE": "Perfil"
+    },
+
+    "TIMELOGS": {
+        "TITLE": "REGISTROS DE TIEMPO"
+    },
+
+    "ALERTS": {
+        "LOGIN_SUCCESSFUL": "Has iniciado sesión correctamente",
+        "LOGOUT_SUCCESSFUL": "Has terminado tu sesion satisfactoriamente"
+    },
+
+    "ERROR": {
+        "NO_DATA_FOUND": "No se encontraron datos",
+        "SESSION_EXPIRED": "Se le ha cerrado la sesión debido a la inactividad. Por favor inicie sesión nuevamente"
+    }
+}

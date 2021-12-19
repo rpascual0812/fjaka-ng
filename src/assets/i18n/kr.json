@@ -1,0 +1,23 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "계기반",
+        "TIMELOGS": "시간 로그",
+        "TIMESHEET": "작업 표",
+        "LEAVES": "Leaves",
+        "PROFILE": "프로필"
+    },
+
+    "TIMELOGS": {
+        "TITLE": "시간 로그"
+    },
+
+    "ALERTS": {
+        "LOGIN_SUCCESSFUL": "성공적으로 로그인했습니다",
+        "LOGOUT_SUCCESSFUL": "당신은 성공적으로 로그 아웃했습니다"
+    },
+
+    "ERROR": {
+        "NO_DATA_FOUND": "데이터가 없습니다",
+        "SESSION_EXPIRED": "비활성 상태로 인해 로그 아웃되었습니다. 다시 로그인하십시오"
+    }
+}

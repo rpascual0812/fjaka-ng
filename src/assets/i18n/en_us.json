@@ -1,0 +1,28 @@
+{
+    "SIDEBAR": {
+        "DASHBOARD": "Dashboard",
+        "SCHOLARS": "Scholars",
+        "SETTINGS": "Settings",
+        "TIMESHEET": "Timesheet",
+        "LEAVES": "Leaves",
+        "PROFILE": "Profile"
+    },
+
+    "SCHOLARS": {
+        "TITLE": "Scholars"
+    },
+
+    "SETTINGS": {
+        "TITLE": "Settings"
+    },
+
+    "ALERTS": {
+        "LOGIN_SUCCESSFUL": "You have successfully logged in",
+        "LOGOUT_SUCCESSFUL": "You have successfully logged out"
+    },
+
+    "ERROR": {
+        "NO_DATA_FOUND": "No data found",
+        "SESSION_EXPIRED": "You have been logged out due to inactivity. Please log in again"
+    }
+}

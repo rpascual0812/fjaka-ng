@@ -1,0 +1,146 @@
+<div class="header bg-gradient-primary pb-6 pt-6 pt-md-6">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+    <div class="row mt-5">
+        <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="card shadow">
+                <div class="card-header border-0">
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 mx-auto">
+                            <form [formGroup]="scholarForm" (ngSubmit)="submit()">
+                                <h2 class="text-primary">Scholar Information</h2>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Ronin</label>
+                                    <input class="form-control" type="text" placeholder="Ronin" formControlName="ronin" [ngClass]="{ 'is-invalid': submitted && f.ronin.errors }">
+                                    <div *ngIf="submitted && f.ronin.errors" class="invalid-feedback">
+                                        <div *ngIf="f.ronin.errors.required">Ronin is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Nickname</label>
+                                    <input class="form-control" type="text" placeholder="Nickname" formControlName="nickname" [ngClass]="{ 'is-invalid': submitted && f.nickname.errors }">
+                                    <div *ngIf="submitted && f.nickname.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nickname.errors.required">Nickname is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Last Name</label>
+                                    <input class="form-control" type="text" placeholder="Last Name" formControlName="last_name" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
+                                    <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">First Name</label>
+                                    <input class="form-control" type="text" placeholder="First Name" formControlName="first_name" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
+                                    <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.first_name.errors.required">First Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Middle Name</label>
+                                    <input class="form-control" type="text" placeholder="Middle Name" formControlName="middle_name" [ngClass]="{ 'is-invalid': submitted && f.middle_name.errors }">
+                                    <div *ngIf="submitted && f.middle_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.middle_name.errors.required">Middle Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Name Extension (Optional)</label>
+                                    <input class="form-control" type="text" placeholder="Name Extension" formControlName="name_extension">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-tel-input" class="form-control-label">Birth Date</label>
+                                    <div class="input-group">
+                                        <input
+                                        bsDatepicker
+                                        #date="bsDatepicker"
+                                        class="form-control datepicker"
+                                        placeholder="Birthday"
+                                        type="text"
+                                        autocomplete="off"
+                                        formControlName="birth_date"
+                                        [ngClass]="{ 'is-invalid': submitted && f.birth_date.errors }"
+                                        [bsConfig]="dateConfig"
+                                        />
+
+                                        <div class="input-group-append" (click)="date.show()" [ngClass]="{ 'is-invalid': submitted && f.birth_date.errors }">
+                                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="submitted && f.birth_date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.birth_date.errors.required">Birth Date is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email-input" class="form-control-label">Email Address</label>
+                                    <input class="form-control" type="email" placeholder="Email Address" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email Address is required</div>
+                                        <div *ngIf="f.email.errors.pattern">Email Address is invalid</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-mobile_number-input" class="form-control-label">Mobile Number</label>
+                                    <input class="form-control" type="number" placeholder="Mobile Number" formControlName="mobile_number" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
+                                    <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mobile_number.errors.required">Mobile Number is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Gender</label>
+                                    <div>
+                                        <app-select
+                                        #jobTitle
+                                        [model]="genders_pk"
+                                        [editable]="false"
+                                        text="name"
+                                        url="/genders/select"
+                                        (change)="genderChange($event)"
+                                        (callback)="genderData($event)"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.genders_pk.errors }"
+                                        ></app-select>
+                                        <!-- <input class="form-control" type="text" formControlName="job_title_pk" [ngClass]="{ 'is-invalid': submitted && f.job_title_pk.errors }" /> -->
+                                        <div *ngIf="submitted && f.genders_pk.errors" class="invalid-feedback">
+                                            <div *ngIf="f.genders_pk.errors.required">Gender is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Color</label>
+                                    <div>
+                                        <input
+                                        formControlName="color"
+                                        [(colorPicker)]="color"
+                                        [style.background]="color"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.color.errors }"
+                                        />
+                                        <!-- <input class="form-control" type="text" formControlName="job_title_pk" [ngClass]="{ 'is-invalid': submitted && f.job_title_pk.errors }" /> -->
+                                        <div *ngIf="submitted && f.genders_pk.errors" class="invalid-feedback">
+                                            <div *ngIf="f.genders_pk.errors.required">Gender is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <button type="button" class="btn btn-danger float-left" routerLink="/scholars">Cancel</button>
+                                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

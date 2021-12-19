@@ -1,0 +1,195 @@
+<div class="header bg-gradient-info pb-8 pt-1 pt-md-3">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row">
+                <span class="mb-0 ml-3"><strong class="h2"> {{ 'SCHOLARS.TITLE' | translate }}</strong></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7" style="min-height: 500px;">
+    <div class="row mt-5 mt-2">
+        <div class="col-xl-12">
+
+            <div class="card shadow mt-2">
+
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <input type="text" class="form-control" [(ngModel)]="filters.search"  />
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-default" (click)="search()">Search</button>
+                        </div>
+                        <div class="col text-right">
+                            <button type="button" class="btn btn-primary" routerLink="/scholars/add">Add New</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <!-- Projects table -->
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Nickname</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">MMR</th>
+                                <th scope="col">Last Activity</th>
+                                <th scope="col">Last Claimed</th>
+                                <th scope="col">Scholar Share</th>
+                                <th scope="col">Manager Share</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users; index as i;">
+                                <td>
+                                    <div class="avatar-group">
+                                        <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="{{user.first_name}} {{user.last_name}}">
+                                            <img alt="{{user.first_name}} {{user.last_name}}" src="./assets/img/icon.png">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{user.nickname}}
+                                </td>
+                                <td>
+                                    {{user.first_name}} {{user.last_name}}
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <!-- <tr *ngIf="users.length==0">
+                                <td colspan="9" class="text-center text-gray">{{ 'ERROR.NO_DATA_FOUND' | translate }}.</td>
+                            </tr> -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="100%">
+                                    <div class="d-flex flex-row-reverse" *ngIf="pagination.count>0">
+                                        <pagination-controls responsive="true" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+                                        <div>
+                                            <select (change)="onTableSizeChange($event)" class="form-control form-control-sm">
+                                                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                    {{ size }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="missingClock" tabindex="-1" role="dialog" aria-labelledby="missingClockModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form [formGroup]="timelogForm" (ngSubmit)="submitTimeLog()">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="missingClockModalLabel">Missing Clock</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-12">
+                                <app-select
+                                value="value"
+                                text="text"
+                                appearance="outline"
+                                [arr]="[{ value: 'in', text: 'Clock in'}, { value: 'out', text: 'Clock out'}]"
+                                ngDefaultControl
+                                formControlName="clock_type"
+                                selected="Clock in"
+                                (change)="clock_type_change($event)"
+                                ></app-select>
+                            </div>
+                        </div>
+                        <div class="form-group mt-5">
+                            <label>Date and Time</label>
+                            <div class="row" style="margin-top: -35px !important;">
+                                <div class="col-sm-6 pt-5">
+                                    <div class="input-group">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <!-- <input
+                                                #date="bsDatepicker"
+                                                class="form-control datepicker"
+                                                bsDatepicker
+                                                placeholder="Select date"
+                                                type="text"
+                                                autocomplete="off"
+                                                formControlName="date"
+                                                [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+                                                [bsConfig]="dateConfig"
+                                                /> -->
+
+                                                <div class="input-group-append" (click)="date.show()" [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+                                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                                            <div *ngIf="f.date.errors.required">Date is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group pt-3">
+                                        <!-- <timepicker
+                                        formControlName="time"
+                                        minuteStep="15"
+                                        [ngClass]="{ 'is-invalid': submitted && f.time.errors }"
+                                        ></timepicker> -->
+                                        <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+                                            <div *ngIf="f.time.errors.required">Time is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Remarks</label>
+                            <textarea name="reason" rows="4" class="form-control form-control-flush" formControlName="remarks" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
+                            <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                                <div *ngIf="f.remarks.errors.required">Remarks is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
